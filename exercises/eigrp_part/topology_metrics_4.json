@@ -1,0 +1,121 @@
+{
+  "hosts": {
+    "10.0.1.0/24": {
+      "connected_to": { "switch": "s1", "port": 1 },
+      "mac": "08:00:00:00:01:01"
+    },
+    "10.0.4.0/24": {
+      "connected_to": { "switch": "s4", "port": 1 },
+      "mac": "08:00:00:00:04:04"
+    }
+  },
+  "switches": {
+    "s1": {
+      "variance": 2,
+      "macs": {
+        "1": "00:aa:00:00:01:01",
+        "2": "00:aa:00:00:01:02",
+        "3": "00:aa:00:00:01:03",
+        "4": "00:aa:00:00:01:04"
+      }
+    },
+    "s2": {
+      "variance": 1,
+      "macs": {
+        "2": "00:aa:00:00:02:02",
+        "3": "00:aa:00:00:02:03"
+      }
+    },
+    "s3": {
+      "variance": 1,
+      "macs": {
+        "2": "00:aa:00:00:03:02",
+        "3": "00:aa:00:00:03:03"
+      }
+    },
+    "s4": {
+      "variance": 2,
+      "macs": {
+        "1": "00:aa:00:00:04:01",
+        "2": "00:aa:00:00:04:02",
+        "3": "00:aa:00:00:04:03",
+        "4": "00:aa:00:00:04:04"
+      }
+    }
+  },
+  "link_metrics": [
+    {
+      "from": "s1",
+      "to": "s2",
+      "from_port": 2,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:02:02"
+    },
+    {
+      "from": "s1",
+      "to": "s3",
+      "from_port": 3,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:03:02"
+    },
+    {
+      "from": "s1",
+      "to": "s4",
+      "from_port": 4,
+      "metric": 50,
+      "next_hop_mac": "00:aa:00:00:04:02"
+    },
+
+    {
+      "from": "s2",
+      "to": "s1",
+      "from_port": 2,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:01:02"
+    },
+    {
+      "from": "s2",
+      "to": "s4",
+      "from_port": 3,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:04:04"
+    },
+
+    {
+      "from": "s3",
+      "to": "s1",
+      "from_port": 2,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:01:03"
+    },
+    {
+      "from": "s3",
+      "to": "s4",
+      "from_port": 3,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:04:03"
+    },
+
+    {
+      "from": "s4",
+      "to": "s1",
+      "from_port": 2,
+      "metric": 50,
+      "next_hop_mac": "00:aa:00:00:01:04"
+    },
+    {
+      "from": "s4",
+      "to": "s3",
+      "from_port": 3,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:03:03"
+    },
+    {
+      "from": "s4",
+      "to": "s2",
+      "from_port": 4,
+      "metric": 10,
+      "next_hop_mac": "00:aa:00:00:02:03"
+    }
+  ]
+}
